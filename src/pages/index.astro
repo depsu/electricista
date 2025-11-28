@@ -1,103 +1,144 @@
----
+src/pages/index.astro---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import StatsGrid from '../components/StatsGrid.astro';
 import FeatureSection from '../components/FeatureSection.astro';
-import PricingTable from '../components/PricingTable.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
+import QuickForm from '../components/QuickForm.astro'; // Importamos el formulario
 ---
 
-<Layout title="Servicios Eléctricos El Rayo - Electricista Autorizado SEC">
-	<Hero 
-        title="Servicios Eléctricos <br><span class='text-amber-400'>El Rayo</span>"
-        subtitle="Llego rápido, cobro lo justo y dejo todo funcionando. Electricista autorizado SEC a domicilio y urgencias."
+<Layout title="Electricista Autorizado SEC a Domicilio | El Rayo">
+    
+    <Hero 
+        title="Electricista Autorizado <span class='text-yellow-400'>SEC</span> a Domicilio"
+        subtitle="Llegamos en 30-60 minutos. Urgencias 24/7, Empalmes y Certificación TE1. Cobro justo y garantía por escrito."
         bgImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
-        badgeText="Autorizado SEC"
+        badgeText="Disponibilidad Inmediata"
+        showStatus={true} 
+        showQuickForm={true} 
     />
 
     <StatsGrid 
         stats={[
-            { number: "+10", label: "Años de Experiencia", icon: "fa-solid fa-calendar-check" },
-            { number: "+1000", label: "Trabajos Realizados", icon: "fa-solid fa-bolt" },
-            { number: "24/7", label: "Urgencias Eléctricas", icon: "fa-solid fa-clock" },
-            { number: "SEC", label: "Instalador Autorizado", icon: "fa-solid fa-id-card" }
+            { number: "+10", label: "Años de Experiencia", icon: "fa-solid fa-helmet-safety" },
+            { number: "Licencia", label: "Instalador SEC Al Día", icon: "fa-solid fa-id-card" },
+            { number: "24/7", label: "Atención Urgencias", icon: "fa-solid fa-bolt" },
+            { number: "100%", label: "Garantía Escrita", icon: "fa-solid fa-file-signature" }
         ]}
     />
 
     <FeatureSection 
-        title="Servicios Eléctricos Profesionales"
-        subtitle="Atiendo en todo Santiago, principalmente en las comunas de Maipú, Pudahuel y Estación Central."
-        image="https://images.unsplash.com/photo-1581094794329-cd1096a7a438?q=80&w=2070&auto=format&fit=crop"
+        title="¿Se cortó la luz? Recuperamos tu energía hoy mismo"
+        subtitle="No arriesgue a su familia con reparaciones caseras. Detectamos y reparamos fallas eléctricas, cortocircuitos y cortes de luz con equipos certificados."
+        image="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=2069&auto=format&fit=crop"
         features={[
-            "Urgencias eléctricas 24 horas (cortes de luz, fallas)",
-            "Cambio de tableros y automáticos",
-            "Trámite de certificación TE1 (Anexo 1) para empalmes",
-            "Instalaciones domiciliarias seguras"
+            "Atención de emergencia en menos de 1 hora",
+            "Cambio de automáticos y diferenciales",
+            "Reparación de tableros quemados",
+            "Detección de fugas de corriente (cuentas altas)"
         ]}
-    />
+    >
+        <a href="tel:+56987654321" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-700 transition-colors text-lg">
+            <i class="fa-solid fa-phone-volume mr-2 animate-pulse"></i> Llamar de Urgencia
+        </a>
+    </FeatureSection>
+
+    <section class="py-16 bg-slate-900 text-white" id="zonas">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">Zonas de Cobertura Rápida</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto mb-10">
+                Para garantizar tiempos de respuesta breves, priorizamos la atención en el sector poniente y centro de Santiago.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
+                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
+                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
+                    <div class="font-bold">Maipú</div>
+                </div>
+                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
+                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
+                    <div class="font-bold">Pudahuel</div>
+                </div>
+                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
+                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
+                    <div class="font-bold">Estación Central</div>
+                </div>
+                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
+                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
+                    <div class="font-bold">Cerrillos</div>
+                </div>
+                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
+                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
+                    <div class="font-bold">Lo Prado</div>
+                </div>
+            </div>
+            <p class="mt-8 text-sm text-slate-400">¿Otra comuna? Consúltenos disponibilidad por WhatsApp.</p>
+        </div>
+    </section>
 
     <FeatureSection 
-        title="¿Por qué elegir a El Rayo?"
-        subtitle="Compromiso, seguridad y rapidez en cada trabajo eléctrico que realizamos."
-        image="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
+        title="Trámites SEC y Regularizaciones (TE1)"
+        subtitle="Evite multas y regularice su propiedad para venta o arriendo. Tramitamos su Anexo 1 (TE1) ante la Superintendencia."
+        image="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop"
         align="right"
         features={[
-            "Electricista autorizado SEC",
-            "Llego rápido a tu domicilio",
-            "Cobro lo justo, sin sorpresas",
-            "Dejo todo funcionando perfectamente"
+            "Inscripción y Certificación TE1",
+            "Aumento de capacidad (Empalmes)",
+            "Planos eléctricos actualizados",
+            "Normalización de tableros antiguos"
         ]}
     />
 
-    <!-- PricingTable removed as per request -->
-
     <Testimonials 
+        title="Vecinos que confían en El Rayo"
+        subtitle="La transparencia y el buen trabajo son nuestra mejor publicidad."
         reviews={[
             {
-                name: "María González",
-                text: "Excelente servicio, Juan llegó muy rápido cuando tuve un corte de luz y solucionó el problema de inmediato.",
+                name: "Marcela Díaz",
+                text: "Se me cortó la luz un domingo en la noche en Maipú. Llegó en 40 minutos y solucionó el problema del tablero super rápido. Muy amable.",
                 rating: 5,
                 location: "Maipú"
             },
             {
-                name: "Carlos Tapia",
-                text: "Muy profesional. Me ayudó con el trámite TE1 para mi empalme y todo salió perfecto. Precio justo.",
+                name: "Roberto Soto",
+                text: "Necesitaba el TE1 para vender mi casa en Pudahuel. Juan hizo todo el trámite en la SEC y salió aprobado sin problemas. 100% recomendado.",
                 rating: 5,
                 location: "Pudahuel"
             },
             {
-                name: "Ana Silva",
-                text: "Me salvaron un domingo por la tarde con una falla en el tablero. El técnico fue muy amable y eficiente.",
+                name: "Almacén 'El Vecino'",
+                text: "Nos instaló toda la iluminación nueva del local y enchufes para las máquinas. Trabajo limpio y ordenado.",
                 rating: 5,
                 location: "Estación Central"
-            },
+            }
         ]}
-    </Testimonials>
+    />
 
-    <FAQ
+    <FAQ 
         title="Preguntas Frecuentes"
         items={[
             {
-                question: "¿Cuál es el tiempo de respuesta?",
-                answer: "Para urgencias, nuestro tiempo promedio de llegada es de 30 a 60 minutos dentro de la zona de cobertura."
+                question: "¿Cuánto cuesta la visita técnica?",
+                answer: "El valor de la visita técnica para diagnóstico es de $15.000 (reembolsable si se realiza el trabajo con nosotros). Esto asegura un presupuesto exacto y sin sorpresas."
             },
             {
-                question: "¿Dan garantía por los trabajos?",
-                answer: "Sí, todos nuestros trabajos cuentan con garantía por escrito. El tiempo depende del tipo de servicio realizado."
+                question: "¿Están certificados por la SEC?",
+                answer: "Sí, contamos con Licencia SEC vigente clase D/C. Todos nuestros trabajos cumplen con la normativa actual NCH 4/2003 y los nuevos pliegos técnicos."
             },
             {
-                question: "¿Qué medios de pago aceptan?",
-                answer: "Aceptamos efectivo, transferencia electrónica y tarjetas de crédito/débito."
+                question: "¿Atienden emergencias de noche o fines de semana?",
+                answer: "Sí, tenemos servicio 24/7. Las tarifas de urgencia fuera de horario hábil pueden tener un recargo, el cual se le informará transparentemente antes de ir."
             }
         ]}
     />
 
     <CallToAction 
-        title="¿Necesitas un electricista urgente?"
-        subtitle="Contáctame ahora y solucionaré tu problema eléctrico. Llego rápido, cobro lo justo."
-        ctaText="Contactar por WhatsApp"
-        ctaLink="https://wa.me/56987654321"
+        title="¿Necesitas un electricista ahora?"
+        subtitle="No esperes a que el problema empeore. Cotiza gratis por WhatsApp o llámanos."
+        ctaText="Llamar Ahora"
+        ctaLink="tel:+56987654321"
+        bgImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
     />
 </Layout>

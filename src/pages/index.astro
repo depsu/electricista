@@ -6,110 +6,218 @@ import FeatureSection from '../components/FeatureSection.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
-import QuickForm from '../components/QuickForm.astro'; // Importamos el formulario
+import QuickForm from '../components/QuickForm.astro';
+
+// Datos estructurados para Google (SEO Local Avanzado)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "name": "Servicios Eléctricos El Rayo",
+  "image": "https://electricopro.cl/logo.png", // Asegúrate de tener un logo o usa una foto relevante
+  "@id": "https://electricopro.cl",
+  "url": "https://electricopro.cl",
+  "telephone": "+56987654321",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Santiago",
+    "addressLocality": "Santiago",
+    "addressRegion": "Metropolitana",
+    "postalCode": "9250000",
+    "addressCountry": "CL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -33.5109, // Coordenadas aprox de Maipú/Central
+    "longitude": -70.7584
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "areaServed": ["Maipú", "Pudahuel", "Estación Central", "Santiago Centro", "Cerrillos", "Lo Prado"],
+  "sameAs": [
+    "https://facebook.com/juan.electricista.stgo"
+  ]
+};
 ---
 
-<Layout title="Electricista Autorizado SEC a Domicilio | El Rayo">
+<Layout title="Electricista Autorizado SEC en Santiago | El Rayo" regionText="Expertos Certificados">
     
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} slot="head" />
+
     <Hero 
-        title="Electricista Autorizado <span class='text-yellow-400'>SEC</span> a Domicilio"
-        subtitle="Llegamos en 30-60 minutos. Urgencias 24/7, Empalmes y Certificación TE1. Cobro justo y garantía por escrito."
+        title="Expertos en Electricidad <br> <span class='text-yellow-400'>Certificada SEC</span>"
+        subtitle="Soluciones definitivas para su hogar o empresa. Urgencias 24/7, Aumentos de Capacidad y Certificación TE1. <br><strong>Seguridad garantizada por escrito.</strong>"
         bgImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
-        badgeText="Disponibilidad Inmediata"
-        showStatus={true} 
-        showQuickForm={true} 
+        badgeText="Atención Inmediata en Stgo"
+        showStatus={false} 
+        showQuickForm={true}
+        variant="default"
     />
 
-    <StatsGrid 
-        stats={[
-            { number: "+10", label: "Años de Experiencia", icon: "fa-solid fa-helmet-safety" },
-            { number: "Licencia", label: "Instalador SEC Al Día", icon: "fa-solid fa-id-card" },
-            { number: "24/7", label: "Atención Urgencias", icon: "fa-solid fa-bolt" },
-            { number: "100%", label: "Garantía Escrita", icon: "fa-solid fa-file-signature" }
-        ]}
-    />
-
-    <FeatureSection 
-        title="¿Se cortó la luz? Recuperamos tu energía hoy mismo"
-        subtitle="No arriesgue a su familia con reparaciones caseras. Detectamos y reparamos fallas eléctricas, cortocircuitos y cortes de luz con equipos certificados."
-        image="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=2069&auto=format&fit=crop"
-        features={[
-            "Atención de emergencia en menos de 1 hora",
-            "Cambio de automáticos y diferenciales",
-            "Reparación de tableros quemados",
-            "Detección de fugas de corriente (cuentas altas)"
-        ]}
-    >
-        <a href="tel:+56987654321" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-700 transition-colors text-lg">
-            <i class="fa-solid fa-phone-volume mr-2 animate-pulse"></i> Llamar de Urgencia
-        </a>
-    </FeatureSection>
-
-    <section class="py-16 bg-slate-900 text-white" id="zonas">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-8">Zonas de Cobertura Rápida</h2>
-            <p class="text-slate-300 max-w-2xl mx-auto mb-10">
-                Para garantizar tiempos de respuesta breves, priorizamos la atención en el sector poniente y centro de Santiago.
-            </p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
-                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
-                    <div class="font-bold">Maipú</div>
+    <div class="relative z-10 -mt-8 md:-mt-16 container mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl border-b-4 border-yellow-400 p-6 md:p-10 flex flex-wrap justify-between items-center gap-6 text-center md:text-left">
+            <div class="flex items-center gap-4 mx-auto md:mx-0">
+                <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-2xl">
+                    <i class="fa-solid fa-id-card"></i>
                 </div>
-                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
-                    <div class="font-bold">Pudahuel</div>
-                </div>
-                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
-                    <div class="font-bold">Estación Central</div>
-                </div>
-                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
-                    <div class="font-bold">Cerrillos</div>
-                </div>
-                <div class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition">
-                    <i class="fa-solid fa-location-dot text-yellow-400 mb-2 text-xl"></i>
-                    <div class="font-bold">Lo Prado</div>
+                <div>
+                    <p class="text-sm text-slate-500 font-bold uppercase tracking-wider">Licencia VIGENTE</p>
+                    <p class="text-xl md:text-2xl font-extrabold text-slate-900">Instalador SEC</p>
                 </div>
             </div>
-            <p class="mt-8 text-sm text-slate-400">¿Otra comuna? Consúltenos disponibilidad por WhatsApp.</p>
+            
+            <div class="hidden md:block w-px h-16 bg-slate-200"></div>
+
+            <div class="flex items-center gap-4 mx-auto md:mx-0">
+                <div class="w-16 h-16 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-500 text-2xl">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500 font-bold uppercase tracking-wider">Disponibilidad</p>
+                    <p class="text-xl md:text-2xl font-extrabold text-slate-900">Urgencias 24/7</p>
+                </div>
+            </div>
+
+            <div class="hidden md:block w-px h-16 bg-slate-200"></div>
+
+            <div class="flex items-center gap-4 mx-auto md:mx-0">
+                <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center text-green-600 text-2xl">
+                    <i class="fa-solid fa-check-shield"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-slate-500 font-bold uppercase tracking-wider">Garantía</p>
+                    <p class="text-xl md:text-2xl font-extrabold text-slate-900">100% Asegurada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <FeatureSection 
+        title="Recuperamos tu Energía y Seguridad"
+        subtitle="Un corte de luz o un tablero quemado no es solo una molestia, es un riesgo de incendio. No improvisamos: diagnosticamos y reparamos con instrumental de precisión."
+        image="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=2069&auto=format&fit=crop"
+        features={[
+            "Atención prioritaria por corte de suministro",
+            "Detección de fugas (Si salta el automático)",
+            "Reparación definitiva de tableros quemados",
+            "Materiales certificados por normativa Chilena"
+        ]}
+    >
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="tel:+56987654321" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-lg hover:-translate-y-1">
+                <i class="fa-solid fa-phone mr-2"></i> Llamar al Técnico
+            </a>
+            <a href="#zonas" class="inline-flex items-center justify-center bg-white border border-slate-300 text-slate-700 font-bold py-3 px-8 rounded-xl transition hover:bg-slate-50">
+                Ver Cobertura
+            </a>
+        </div>
+    </FeatureSection>
+
+    <section class="py-20 bg-slate-50 border-y border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Servicios Integrales</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">Más que solo urgencias</h2>
+                <p class="text-slate-600 text-lg">Cubrimos todas las necesidades eléctricas de su hogar o negocio con la misma calidad y compromiso.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-300 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-house-signal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Instalación de Enchufes</h3>
+                    <p class="text-slate-500 mb-4">Nuevos puntos de corriente, interruptores inteligentes y recableado seguro para evitar sobrecargas.</p>
+                    <a href="https://wa.me/56987654321?text=Hola,%20necesito%20instalar%20enchufes" class="text-blue-600 font-bold text-sm hover:underline">Cotizar instalación &rarr;</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-300 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-regular fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Iluminación LED</h3>
+                    <p class="text-slate-500 mb-4">Proyectos de iluminación eficiente, focos embutidos, cintas LED y sensores de movimiento.</p>
+                    <a href="https://wa.me/56987654321?text=Hola,%20necesito%20ver%20temas%20de%20iluminaci%C3%B3n" class="text-blue-600 font-bold text-sm hover:underline">Ver opciones &rarr;</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-300 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Normalización Tableros</h3>
+                    <p class="text-slate-500 mb-4">Ordenamos y etiquetamos su tablero. Reemplazo de protecciones antiguas o dañadas.</p>
+                    <a href="https://wa.me/56987654321?text=Hola,%20necesito%20normalizar%20mi%20tablero" class="text-blue-600 font-bold text-sm hover:underline">Agendar revisión &rarr;</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <FeatureSection 
-        title="Trámites SEC y Regularizaciones (TE1)"
-        subtitle="Evite multas y regularice su propiedad para venta o arriendo. Tramitamos su Anexo 1 (TE1) ante la Superintendencia."
-        image="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop"
+        title="Trámites SEC y Certificación TE1"
+        subtitle="¿Necesita vender su propiedad o regularizar una ampliación? Nos encargamos de toda la burocracia ante la Superintendencia."
+        image="https://images.unsplash.com/photo-1581092921461-eab62e47b71e?q=80&w=2070&auto=format&fit=crop"
         align="right"
         features={[
-            "Inscripción y Certificación TE1",
-            "Aumento de capacidad (Empalmes)",
-            "Planos eléctricos actualizados",
-            "Normalización de tableros antiguos"
+            "Inscripción de Anexo 1 (TE1) garantizada",
+            "Solicitud de nuevo empalme (Medidor)",
+            "Aumento de capacidad (Para aire acondicionado/inducción)",
+            "Planos eléctricos digitalizados"
         ]}
     />
 
+    <section class="py-16 bg-slate-900 relative overflow-hidden" id="zonas">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -mr-20 -mt-20"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Cobertura Estratégica en Santiago</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto mb-12 text-lg">
+                Para cumplir nuestra promesa de rapidez, concentramos nuestros móviles técnicos en las siguientes comunas:
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+                {['Maipú', 'Pudahuel', 'Estación Central', 'Cerrillos', 'Lo Prado'].map((comuna) => (
+                    <div class="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition duration-300 hover:-translate-y-1">
+                        <i class="fa-solid fa-location-dot text-yellow-400 text-2xl mb-3 group-hover:scale-110 transition-transform block"></i>
+                        <span class="font-bold text-white text-lg">{comuna}</span>
+                    </div>
+                ))}
+            </div>
+            
+            <div class="mt-12 p-4 bg-blue-900/50 rounded-lg inline-block border border-blue-500/30">
+                <p class="text-slate-300 text-sm">
+                    <i class="fa-solid fa-info-circle text-blue-400 mr-2"></i>
+                    ¿Su comuna no aparece? <a href="https://wa.me/56987654321" class="text-white underline hover:text-yellow-400">Consulte disponibilidad por WhatsApp</a>, atendemos gran parte de la RM.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <Testimonials 
-        title="Vecinos que confían en El Rayo"
-        subtitle="La transparencia y el buen trabajo son nuestra mejor publicidad."
+        title="Confianza que se demuestra"
+        subtitle="Más de 10 años en el rubro nos permiten tener clientes satisfechos que nos recomiendan."
         reviews={[
             {
-                name: "Marcela Díaz",
-                text: "Se me cortó la luz un domingo en la noche en Maipú. Llegó en 40 minutos y solucionó el problema del tablero super rápido. Muy amable.",
+                name: "Valeria M.",
+                text: "Excelente servicio. Llegó puntual a mi casa en Maipú, detectó la falla en 10 minutos y el cobro fue justo lo acordado. Muy transparente.",
                 rating: 5,
                 location: "Maipú"
             },
             {
-                name: "Roberto Soto",
-                text: "Necesitaba el TE1 para vender mi casa en Pudahuel. Juan hizo todo el trámite en la SEC y salió aprobado sin problemas. 100% recomendado.",
+                name: "Jorge Ramírez",
+                text: "Necesitaba el certificado TE1 urgente para la recepción final. Juan gestionó todo con la SEC y salió aprobado rápido. Un 7.",
                 rating: 5,
-                location: "Pudahuel"
+                location: "Pudahuel Sur"
             },
             {
-                name: "Almacén 'El Vecino'",
-                text: "Nos instaló toda la iluminación nueva del local y enchufes para las máquinas. Trabajo limpio y ordenado.",
+                name: "Minimarket Los Andes",
+                text: "Siempre llamamos al Rayo cuando tenemos problemas con las conservadoras o las luces del local. Es nuestro eléctrico de cabecera.",
                 rating: 5,
                 location: "Estación Central"
             }
@@ -120,24 +228,28 @@ import QuickForm from '../components/QuickForm.astro'; // Importamos el formular
         title="Preguntas Frecuentes"
         items={[
             {
-                question: "¿Cuánto cuesta la visita técnica?",
-                answer: "El valor de la visita técnica para diagnóstico es de $15.000 (reembolsable si se realiza el trabajo con nosotros). Esto asegura un presupuesto exacto y sin sorpresas."
+                question: "¿Entregan boleta o factura?",
+                answer: "Por supuesto. Somos una empresa establecida. Entregamos boleta o factura electrónica por todos nuestros servicios y materiales."
             },
             {
-                question: "¿Están certificados por la SEC?",
-                answer: "Sí, contamos con Licencia SEC vigente clase D/C. Todos nuestros trabajos cumplen con la normativa actual NCH 4/2003 y los nuevos pliegos técnicos."
+                question: "¿Cuál es el valor de la visita?",
+                answer: "La visita técnica tiene un costo de $15.000 para diagnóstico en nuestras zonas principales. <strong>Si acepta el presupuesto de reparación, este valor se descuenta del total.</strong>"
             },
             {
-                question: "¿Atienden emergencias de noche o fines de semana?",
-                answer: "Sí, tenemos servicio 24/7. Las tarifas de urgencia fuera de horario hábil pueden tener un recargo, el cual se le informará transparentemente antes de ir."
+                question: "¿Atienden emergencias de madrugada?",
+                answer: "Sí, tenemos servicio 24/7 para emergencias reales (cortes totales, olor a quemado, chispas). Las tarifas fuera de horario hábil tienen un recargo que se informa antes de asistir."
+            },
+            {
+                question: "¿Tienen garantía?",
+                answer: "Absolutamente. Todos nuestros trabajos de reparación e instalación cuentan con una garantía legal de 3 meses, respaldada por nuestra certificación SEC."
             }
         ]}
     />
 
     <CallToAction 
-        title="¿Necesitas un electricista ahora?"
-        subtitle="No esperes a que el problema empeore. Cotiza gratis por WhatsApp o llámanos."
-        ctaText="Llamar Ahora"
+        title="No arriesgues tu seguridad ni tu dinero"
+        subtitle="Contrata a un profesional certificado SEC hoy mismo. Presupuestos claros y trabajo garantizado."
+        ctaText="Llamar Ahora (+569 8765 4321)"
         ctaLink="tel:+56987654321"
         bgImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
     />

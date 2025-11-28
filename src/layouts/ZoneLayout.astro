@@ -1,0 +1,40 @@
+---
+import Layout from './Layout.astro';
+import Hero from '../components/Hero.astro';
+
+interface Props {
+    title: string;
+    regionText: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    heroImage: string;
+    sectors: string[];
+}
+
+const { title, regionText, heroTitle, heroSubtitle, heroImage, sectors } = Astro.props;
+---
+
+<Layout title={title} regionText={regionText}>
+    
+    <Hero 
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        bgImage={heroImage}
+    />
+
+    <section class="py-10 bg-white border-b border-slate-100">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">Atendemos en todos los sectores de {regionText.split('/')[0]}:</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 grayscale hover:grayscale-0 transition-all duration-500">
+                {sectors.map((sector) => (
+                    <div class="flex items-center gap-2 font-bold text-slate-700 text-lg">
+                        <i class="fa-solid fa-location-dot text-blue-500"></i> {sector}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <slot /> <!-- For additional content like specific services or testimonials -->
+
+</Layout>

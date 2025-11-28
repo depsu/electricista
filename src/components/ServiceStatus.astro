@@ -1,0 +1,57 @@
+---
+interface StatusItem {
+    icon: string;
+    title: string;
+    subtitle: string;
+}
+
+interface Props {
+    title?: string;
+    statusText?: string;
+    statusColor?: string; // 'green', 'yellow', 'red'
+    items?: StatusItem[];
+}
+
+const { 
+    title = "Estado del Servicio", 
+    statusText = "Operativo", 
+    statusColor = "green",
+    items = [
+        { icon: "fa-solid fa-check-circle", title: "Sistema Online", subtitle: "Funcionando correctamente" }
+    ]
+} = Astro.props;
+
+const colorClasses = {
+    green: { bg: "bg-green-500", text: "text-green-300", border: "border-green-500/30", ping: "bg-green-400" },
+    yellow: { bg: "bg-yellow-500", text: "text-yellow-300", border: "border-yellow-500/30", ping: "bg-yellow-400" },
+    red: { bg: "bg-red-500", text: "text-red-300", border: "border-red-500/30", ping: "bg-red-400" }
+};
+
+const currentColor = colorClasses[statusColor as keyof typeof colorClasses] || colorClasses.green;
+---
+
+<div class="group bg-slate-800/90 backdrop-blur-xl border border-slate-600 p-6 rounded-3xl shadow-2xl relative transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(37,99,235,0.3)] hover:border-blue-500/50 hidden lg:block max-w-sm w-full">
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-white font-bold group-hover:text-blue-400 transition-colors text-lg">{title}</h2>
+        <span class={`bg-${statusColor}-500/20 ${currentColor.text} px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 border ${currentColor.border}`}>
+            <span class="relative flex h-2 w-2">
+                <span class={`animate-ping absolute inline-flex h-full w-full rounded-full ${currentColor.ping} opacity-75`}></span>
+                <span class={`relative inline-flex rounded-full h-2 w-2 ${currentColor.bg}`}></span>
+            </span> {statusText}
+        </span>
+    </div>
+
+    <div class="space-y-4">
+        {items.map((item) => (
+            <div class="flex items-center gap-4 p-3 bg-slate-700/50 rounded-xl border border-slate-600/30 group-hover:bg-slate-700/80 transition-colors">
+                <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i class={item.icon}></i>
+                </div>
+                <div>
+                    <p class="text-slate-200 text-sm font-bold">{item.title}</p>
+                    <p class="text-slate-400 text-xs">{item.subtitle}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>

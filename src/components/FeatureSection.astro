@@ -1,0 +1,58 @@
+---
+interface Props {
+    title: string;
+    subtitle?: string;
+    image: string;
+    align?: 'left' | 'right';
+    features?: string[];
+    mobileReverse?: boolean; // New prop for mobile ordering
+}
+
+const { title, subtitle, image, align = 'left', features, mobileReverse = false } = Astro.props;
+---
+
+<section class="py-20 bg-white overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class={`flex flex-col ${mobileReverse ? 'flex-col-reverse' : ''} lg:flex-row items-center gap-12 ${align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
+            
+            <!-- Imagen -->
+            <div class="w-full lg:w-1/2 relative group">
+                <div class="absolute inset-0 bg-blue-600 rounded-3xl rotate-3 opacity-10 group-hover:rotate-6 transition-transform duration-500"></div>
+                <img 
+                    src={image} 
+                    alt={title} 
+                    class="relative rounded-3xl shadow-xl w-full object-cover h-[400px] lg:h-[500px] transform transition-transform duration-500 hover:scale-[1.01]"
+                />
+            </div>
+
+            <!-- Contenido -->
+            <div class="w-full lg:w-1/2">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                    {title}
+                </h2>
+                {subtitle && (
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        {subtitle}
+                    </p>
+                )}
+
+                {features && (
+                    <ul class="space-y-4">
+                        {features.map((feature) => (
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0 text-xs">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <span class="text-slate-700 font-medium">{feature}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
+                <div class="mt-10">
+                    <slot />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

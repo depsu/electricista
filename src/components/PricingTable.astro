@@ -1,0 +1,65 @@
+---
+interface PricingPlan {
+    name: string;
+    price: string;
+    description: string;
+    features: string[];
+    isPopular?: boolean;
+    ctaText?: string;
+    ctaLink?: string;
+}
+
+interface Props {
+    title: string;
+    subtitle?: string;
+    plans: PricingPlan[];
+}
+
+const { title, subtitle, plans } = Astro.props;
+---
+
+<section class="py-24 bg-slate-50" id="precios">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{title}</h2>
+            {subtitle && <p class="text-lg text-slate-600">{subtitle}</p>}
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {plans.map((plan) => (
+                <div class={`relative bg-white rounded-2xl p-8 flex flex-col ${plan.isPopular ? 'shadow-xl ring-2 ring-blue-600 scale-105 z-10' : 'shadow-sm border border-slate-200 hover:shadow-md transition-shadow'}`}>
+                    
+                    {plan.isPopular && (
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                            Más Popular
+                        </div>
+                    )}
+
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                        <p class="text-slate-500 text-sm mb-6">{plan.description}</p>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-extrabold text-slate-900">{plan.price}</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 flex-1">
+                        {plan.features.map((feature) => (
+                            <li class="flex items-start gap-3 text-sm text-slate-600">
+                                <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                                <span>{feature}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <a 
+                        href={plan.ctaLink || "#contact"} 
+                        class={`block w-full py-3 px-6 rounded-xl font-bold text-center transition-colors ${plan.isPopular ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-100 text-slate-900 hover:bg-slate-200'}`}
+                    >
+                        {plan.ctaText || "Cotizar Ahora"}
+                    </a>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

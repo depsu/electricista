@@ -1,0 +1,46 @@
+---
+interface Props {
+    title: string;
+    subtitle?: string;
+    ctaText?: string;
+    ctaLink?: string;
+    bgImage?: string;
+}
+
+const { 
+    title, 
+    subtitle = "Contáctanos hoy mismo para una evaluación gratuita.", 
+    ctaText = "Contactar Ahora", 
+    ctaLink = "/contacto",
+    bgImage 
+} = Astro.props;
+---
+
+<section class="relative py-24 bg-blue-600 overflow-hidden">
+    {bgImage && (
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img src={bgImage} alt="Background" class="w-full h-full object-cover opacity-20 mix-blend-overlay" />
+        </div>
+    )}
+    
+    <!-- Decorative circles -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-black/10 rounded-full blur-3xl"></div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            {title}
+        </h2>
+        <p class="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+            {subtitle}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={ctaLink} class="inline-flex items-center justify-center bg-white text-blue-600 font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-blue-50 transition transform hover:-translate-y-1">
+                {ctaText}
+            </a>
+            <a href="https://wa.me/56912345678" class="inline-flex items-center justify-center bg-green-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:bg-green-400 transition transform hover:-translate-y-1">
+                <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+</section>

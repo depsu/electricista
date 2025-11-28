@@ -1,0 +1,57 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { siteConfig } from '../config/site';
+
+interface Props {
+	title: string;
+    regionText?: string;
+}
+
+const { title, regionText = "Región Metropolitana" } = Astro.props;
+const { font } = siteConfig.theme;
+
+// Map fonts to Google Fonts URLs and Tailwind classes
+const fontConfig = {
+    sans: {
+        url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
+        family: 'font-sans' // Tailwind default sans (Inter/System)
+    },
+    serif: {
+        url: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap',
+        family: 'font-serif'
+    },
+    mono: {
+        url: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap',
+        family: 'font-mono'
+    }
+};
+
+const currentFont = fontConfig[font] || fontConfig.sans;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Servicios profesionales y soluciones confiables." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+        
+        <!-- Dynamic Font Loading -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href={currentFont.url} rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+	<body class={`bg-slate-50 antialiased pb-24 md:pb-0 ${currentFont.family}`}>
+        <Navbar>{regionText}</Navbar>
+		<slot />
+        <Footer />
+        <WhatsAppFloat />
+	</body>
+</html>

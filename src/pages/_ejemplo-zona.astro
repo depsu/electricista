@@ -1,0 +1,46 @@
+---
+import ZoneLayout from '../layouts/ZoneLayout.astro';
+---
+
+<ZoneLayout
+    title="Servicio en Zona | Nombre Empresa"
+    regionText="Zona / Subzona"
+    heroTitle="Servicio Profesional en <br><span class='text-blue-400'>Zona y Alrededores</span>"
+    heroSubtitle="Descripción breve del servicio enfocado en la ubicación geográfica. Destacar rapidez y cobertura."
+    heroImage="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2070&auto=format&fit=crop"
+    sectors={["Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5"]}
+>
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Servicios Destacados en la Zona</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto mb-12">
+                Texto introductorio sobre por qué somos la mejor opción en esta ubicación específica.
+                Mencionar conocimiento local y tiempos de respuesta.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Servicio Principal</h3>
+                    <p class="text-slate-500 text-sm">Descripción del servicio más importante para esta zona.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Servicio Secundario</h3>
+                    <p class="text-slate-500 text-sm">Descripción de otro servicio relevante.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Servicio Urgente</h3>
+                    <p class="text-slate-500 text-sm">Descripción de servicios de emergencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</ZoneLayout>

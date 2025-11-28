@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Mensaje Enviado | Nombre Empresa" regionText="Gracias">
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-slate-50 py-20">
+        <div class="container mx-auto px-4 max-w-2xl text-center">
+            <div class="bg-white p-12 rounded-3xl shadow-xl border border-slate-200">
+                <!-- Icono de éxito -->
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-check text-4xl text-green-600"></i>
+                </div>
+
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                    ¡Mensaje Enviado con Éxito!
+                </h1>
+
+                <p class="text-lg text-slate-600 mb-8">
+                    Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos a la brevedad.
+                </p>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+                    <p class="text-sm text-blue-800">
+                        <i class="fa-solid fa-clock mr-2"></i>
+                        Tiempo de respuesta estimado: <strong>24 horas</strong>
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">
+                        <i class="fa-solid fa-home mr-2"></i> Volver al Inicio
+                    </a>
+                    <a href="https://wa.me/56912345678" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Urgente
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,72 @@
+---
+interface Props {
+    title?: string;
+    buttonText?: string;
+    variant?: 'light' | 'dark';
+}
+
+const { 
+    title = "Solicita una Cotización", 
+    buttonText = "Enviar",
+    variant = 'light'
+} = Astro.props;
+
+const bgClass = variant === 'dark' ? 'bg-slate-800' : 'bg-white';
+const textClass = variant === 'dark' ? 'text-white' : 'text-slate-900';
+const inputClass = variant === 'dark' 
+    ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400' 
+    : 'bg-white border-slate-300 text-slate-900';
+---
+
+<div class={`${bgClass} p-6 rounded-2xl shadow-lg border ${variant === 'dark' ? 'border-slate-700' : 'border-slate-200'}`}>
+    <h3 class={`text-lg font-bold ${textClass} mb-4`}>{title}</h3>
+    
+    <form 
+        action="https://formsubmit.co/tu-email@ejemplo.com" 
+        method="POST"
+        class="space-y-4"
+    >
+        <!-- Configuración Formsubmit -->
+        <input type="hidden" name="_subject" value="Nueva solicitud de cotización">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://tu-dominio.com/gracias">
+        <input type="text" name="_honey" style="display:none">
+
+        <div>
+            <input 
+                type="text" 
+                name="name" 
+                required 
+                placeholder="Nombre completo"
+                class={`w-full px-4 py-3 rounded-lg border ${inputClass} focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition text-sm`}
+            >
+        </div>
+
+        <div>
+            <input 
+                type="email" 
+                name="email" 
+                required 
+                placeholder="Email"
+                class={`w-full px-4 py-3 rounded-lg border ${inputClass} focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition text-sm`}
+            >
+        </div>
+
+        <div>
+            <input 
+                type="tel" 
+                name="phone" 
+                required 
+                placeholder="Teléfono"
+                class={`w-full px-4 py-3 rounded-lg border ${inputClass} focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition text-sm`}
+            >
+        </div>
+
+        <button 
+            type="submit" 
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:-translate-y-0.5 shadow-md"
+        >
+            {buttonText}
+        </button>
+    </form>
+</div>

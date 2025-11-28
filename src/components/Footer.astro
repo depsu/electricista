@@ -1,0 +1,13 @@
+---
+import FooterGeneric from './FooterGeneric.astro';
+import FooterService from './FooterService.astro';
+import { siteConfig } from '../config/site';
+
+const { footerVariant } = siteConfig.theme;
+---
+
+{
+    footerVariant === 'service' 
+    ? <FooterService><slot /></FooterService> 
+    : <FooterGeneric><slot /></FooterGeneric>
+}

@@ -1,0 +1,13 @@
+---
+import NavbarGeneric from './NavbarGeneric.astro';
+import NavbarService from './NavbarService.astro';
+import { siteConfig } from '../config/site';
+
+const { navbarVariant } = siteConfig.theme;
+---
+
+{
+    navbarVariant === 'service' 
+    ? <NavbarService><slot /></NavbarService> 
+    : <NavbarGeneric><slot /></NavbarGeneric>
+}

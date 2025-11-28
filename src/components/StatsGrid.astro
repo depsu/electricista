@@ -1,0 +1,37 @@
+---
+interface Stat {
+    number: string;
+    label: string;
+    icon: string;
+}
+
+interface Props {
+    stats: Stat[];
+    bgImage?: string;
+}
+
+const { stats, bgImage } = Astro.props;
+---
+
+<section class="py-20 relative bg-slate-900 text-white">
+    {bgImage && (
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img src={bgImage} alt="Background" class="w-full h-full object-cover opacity-20" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/90"></div>
+        </div>
+    )}
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {stats.map((stat) => (
+                <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors group">
+                    <div class="text-4xl mb-4 text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                        <i class={stat.icon}></i>
+                    </div>
+                    <div class="text-3xl md:text-4xl font-extrabold mb-2">{stat.number}</div>
+                    <div class="text-sm md:text-base text-slate-400 font-medium uppercase tracking-wider">{stat.label}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

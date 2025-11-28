@@ -1,0 +1,33 @@
+---
+import ZoneLayout from '../layouts/ZoneLayout.astro';
+---
+
+<ZoneLayout
+    title="Servicio Especializado | Nombre Empresa"
+    regionText="Servicio / Especialidad"
+    heroTitle="Servicio de Calidad en <br><span class='text-green-400'>Ubicación o Rubro</span>"
+    heroSubtitle="Subtítulo persuasivo que destaque la experiencia, certificaciones o beneficios clave del servicio."
+    heroImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop"
+    sectors={["Beneficio 1", "Beneficio 2", "Beneficio 3", "Beneficio 4", "Beneficio 5"]}
+>
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Expertos en el Rubro</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto mb-12">
+                Explicación detallada de por qué este servicio es necesario y cómo lo aborda la empresa.
+                Enfocarse en los dolores del cliente y la solución.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Característica 1</h3>
+                    <p class="text-slate-500 text-sm">Detalle de esta característica o ventaja competitiva.</p>
+                </div>
+                <!-- More services... -->
+            </div>
+        </div>
+    </section>
+</ZoneLayout>

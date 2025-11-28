@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import StatsGrid from '../components/StatsGrid.astro';
+import FeatureSection from '../components/FeatureSection.astro';
+import PricingTable from '../components/PricingTable.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+---
+
+<Layout title="Plantilla Demo Astro">
+	<Hero 
+        title="Plantilla Demo <br><span class='text-blue-400'>Astro + Tailwind</span>"
+        subtitle="Esta es una demostración de cómo estructurar el sitio usando componentes reutilizables para máxima velocidad y mantenibilidad."
+        bgImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
+        badgeText="Demo Técnica"
+    />
+
+    <StatsGrid 
+        stats={[
+            { number: "+10", label: "Años de Experiencia", icon: "fa-solid fa-calendar-check" },
+            { number: "+5000", label: "Clientes Satisfechos", icon: "fa-solid fa-users" },
+            { number: "24/7", label: "Atención Urgencias", icon: "fa-solid fa-clock" },
+            { number: "100%", label: "Garantía de Servicio", icon: "fa-solid fa-medal" }
+        ]}
+    />
+
+    <FeatureSection 
+        title="Soluciones Profesionales para tu Hogar"
+        subtitle="Nos especializamos en resolver problemas complejos con tecnología de punta y personal altamente capacitado."
+        image="https://images.unsplash.com/photo-1581094794329-cd1096a7a438?q=80&w=2070&auto=format&fit=crop"
+        features={[
+            "Atención inmediata en menos de 60 minutos",
+            "Equipos de última tecnología sin romper pisos",
+            "Personal certificado y con antecedentes al día",
+            "Garantía por escrito en todos los trabajos"
+        ]}
+    />
+
+    <FeatureSection 
+        title="Tecnología que Marca la Diferencia"
+        subtitle="Utilizamos cámaras de inspección y maquinaria de alta presión para asegurar resultados duraderos."
+        image="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
+        align="right"
+        features={[
+            "Diagnóstico preciso con video inspección",
+            "Hidrolavado de alta potencia",
+            "Detección de fugas sin destrucción",
+            "Mantenimiento preventivo programado"
+        ]}
+    />
+
+    <PricingTable 
+        title="Planes Transparentes"
+        subtitle="Elige el plan que mejor se adapte a tus necesidades. Sin costos ocultos."
+        plans={[
+            {
+                name: "Básico",
+                price: "$45.000",
+                description: "Para mantenciones preventivas simples.",
+                features: ["Visita técnica", "Diagnóstico visual", "Limpieza básica", "Informe digital"],
+                ctaText: "Agendar Visita"
+            },
+            {
+                name: "Estándar",
+                price: "$85.000",
+                description: "La opción más elegida para hogares.",
+                features: ["Todo lo del plan Básico", "Destape con máquina", "Garantía 3 meses", "Sanitización área"],
+                isPopular: true,
+                ctaText: "Lo Quiero"
+            },
+            {
+                name: "Premium",
+                price: "$150.000",
+                description: "Solución completa para problemas graves.",
+                features: ["Todo lo del plan Estándar", "Hidrolavado a presión", "Video inspección", "Garantía 6 meses"],
+                ctaText: "Solicitar Premium"
+            }
+        ]}
+    />
+
+    <Testimonials 
+        reviews={[
+            {
+                name: "María González",
+                text: "Excelente servicio, llegaron muy rápido y solucionaron el problema sin ensuciar nada. Totalmente recomendados.",
+                rating: 5,
+                location: "Las Condes"
+            },
+            {
+                name: "Carlos Tapia",
+                text: "Muy profesionales. Me explicaron todo el proceso y el precio fue justo. Volveré a llamarlos para la mantención.",
+                rating: 5,
+                location: "Colina"
+            },
+            {
+                name: "Ana Silva",
+                text: "Me salvaron un domingo por la tarde. El técnico fue muy amable y eficiente. Gracias por la rápida atención.",
+                rating: 5,
+                location: "Ñuñoa"
+            }
+        ]}
+    </Testimonials>
+
+    <FAQ
+        title="Preguntas Frecuentes"
+        items={[
+            {
+                question: "¿Cuál es el tiempo de respuesta?",
+                answer: "Para urgencias, nuestro tiempo promedio de llegada es de 30 a 60 minutos dentro de la zona de cobertura."
+            },
+            {
+                question: "¿Dan garantía por los trabajos?",
+                answer: "Sí, todos nuestros trabajos cuentan con garantía por escrito. El tiempo depende del tipo de servicio realizado."
+            },
+            {
+                question: "¿Qué medios de pago aceptan?",
+                answer: "Aceptamos efectivo, transferencia electrónica y tarjetas de crédito/débito."
+            }
+        ]}
+    />
+
+    <CallToAction 
+        title="¿Tienes una Emergencia?"
+        subtitle="Nuestro equipo está listo para ayudarte las 24 horas del día, los 7 días de la semana."
+        ctaText="Llamar Ahora"
+        ctaLink="tel:+56912345678"
+    />
+</Layout>

@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureSection from '../components/FeatureSection.astro';
+import StatsGrid from '../components/StatsGrid.astro';
+import CallToAction from '../components/CallToAction.astro';
+---
+
+<Layout title="Sobre Nosotros | Nombre Empresa" regionText="Nosotros">
+    <Hero 
+        title="Nuestra Historia y <br><span class='text-blue-400'>Compromiso</span>"
+        subtitle="Más de 10 años brindando soluciones de calidad a hogares y empresas en toda la región."
+        bgImage="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop"
+        badgeText="Sobre Nosotros"
+        showStatus={false}
+    />
+
+    <FeatureSection 
+        title="Nuestra Misión"
+        subtitle="Nacimos con el objetivo de profesionalizar el rubro, ofreciendo un servicio transparente, puntual y garantizado."
+        image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
+        features={[
+            "Honestidad en los diagnósticos",
+            "Tecnología para reducir costos y daños",
+            "Capacitación constante de nuestro equipo",
+            "Respeto por el medio ambiente"
+        ]}
+    />
+
+    <StatsGrid 
+        stats={[
+            { number: "2013", label: "Año de Fundación", icon: "fa-solid fa-flag" },
+            { number: "+15", label: "Profesionales", icon: "fa-solid fa-user-group" },
+            { number: "+5000", label: "Proyectos Realizados", icon: "fa-solid fa-briefcase" },
+            { number: "100%", label: "Compromiso", icon: "fa-solid fa-handshake" }
+        ]}
+    />
+
+    <FeatureSection 
+        title="Equipo Certificado"
+        subtitle="Contamos con técnicos especialistas en cada área, equipados con las mejores herramientas del mercado."
+        image="https://images.unsplash.com/photo-1581578731117-104f8a33837d?q=80&w=2070&auto=format&fit=crop"
+        align="right"
+    >
+        <p class="text-slate-600 mb-6">
+            No enviamos a cualquiera a tu hogar. Todo nuestro personal pasa por un riguroso proceso de selección y capacitación.
+        </p>
+    </FeatureSection>
+
+    <CallToAction 
+        title="Únete a nuestros clientes satisfechos"
+        subtitle="Confía en los expertos para tus necesidades de mantenimiento y reparación."
+    />
+</Layout>

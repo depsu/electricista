@@ -1,0 +1,91 @@
+---
+import { siteConfig } from '../config/site';
+
+const { company, social } = siteConfig;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-50 text-slate-500 py-12 text-sm border-t border-slate-200">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+
+            <div class="lg:col-span-2">
+                <a href="/" class="flex items-center gap-3 mb-6" aria-label="Inicio">
+                    <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                        <!-- Placeholder Logo -->
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">LOGO</div>
+                    </div>
+                    <div class="flex flex-col justify-center -space-y-0.5">
+                        <span class="block font-extrabold text-slate-900 text-xl leading-none tracking-tight">
+                            {company.logoText}<span class="text-primary">{company.logoTextHighlight}</span>
+                        </span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                            <slot /> <!-- Region text -->
+                        </span>
+                    </div>
+                </a>
+                <p class="mb-6 text-slate-500 max-w-xs leading-relaxed">
+                    Soluciones profesionales y confiables. Contáctanos para más información sobre nuestros servicios.
+                </p>
+                <div class="flex gap-4">
+                    {social.facebook && (
+                        <a href={social.facebook} class="text-slate-500 hover:text-primary transition" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </a>
+                    )}
+                    {social.instagram && (
+                        <a href={social.instagram} class="text-slate-500 hover:text-primary transition" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                    )}
+                    {social.twitter && (
+                        <a href={social.twitter} class="text-slate-500 hover:text-primary transition" aria-label="Twitter">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </a>
+                    )}
+                    {social.linkedin && (
+                        <a href={social.linkedin} class="text-slate-500 hover:text-primary transition" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                    )}
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Servicios</h4>
+                <ul class="space-y-2">
+                    <li><a href="/ejemplo-servicio" class="hover:text-primary transition">Servicio 1</a></li>
+                    <li><a href="/ejemplo-servicio" class="hover:text-primary transition">Servicio 2</a></li>
+                    <li><a href="/ejemplo-servicio" class="hover:text-primary transition">Servicio 3</a></li>
+                    <li><a href="/ejemplo-servicio" class="font-medium text-primary hover:underline text-xs mt-2 block">Ver todos los servicios &rarr;</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Cobertura</h4>
+                <ul class="space-y-2">
+                    <li><a href="/ejemplo-zona" class="hover:text-primary transition">Zona 1</a></li>
+                    <li><a href="/ejemplo-zona" class="hover:text-primary transition">Zona 2</a></li>
+                    <li><a href="/ejemplo-zona" class="hover:text-primary transition">Zona 3</a></li>
+                    <li><a href="/ejemplo-zona" class="font-medium text-primary hover:underline text-xs mt-2 block">Ver todas las zonas &rarr;</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-slate-900 font-bold mb-4 uppercase tracking-wider text-xs">Blog & Ayuda</h4>
+                <ul class="space-y-2">
+                    <li><a href="/blog" class="hover:text-primary transition">Consejos de Mantención</a></li>
+                    <li><a href="/faq" class="hover:text-primary transition">Preguntas Frecuentes</a></li>
+                    <li><a href="/contacto" class="hover:text-primary transition">Contacto Administrativo</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="border-t border-slate-200 pt-8 text-center flex flex-col md:flex-row justify-between items-center pb-24 md:pb-0">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <p>&copy; {currentYear} {company.name}. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>

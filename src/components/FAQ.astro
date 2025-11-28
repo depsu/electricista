@@ -1,0 +1,48 @@
+---
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    title?: string;
+    items: FAQItem[];
+}
+
+const { title = "Preguntas Frecuentes", items } = Astro.props;
+---
+
+<section class="py-16 bg-white" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">{title}</h2>
+        
+        <div class="space-y-4">
+            {items.map((item, index) => (
+                <div class="border border-slate-200 rounded-xl overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="w-full flex items-center justify-between p-5 bg-slate-50 hover:bg-slate-100 transition-colors text-left group" onclick={`toggleFaq('faq-${index}')`}>
+                        <span class="font-bold text-slate-800 text-lg pr-4" itemprop="name">{item.question}</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-hover:text-blue-500 transition-transform duration-300" id={`icon-faq-${index}`}></i>
+                    </button>
+                    <div id={`faq-${index}`} class="hidden bg-white p-5 border-t border-slate-100 text-slate-600 leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div itemprop="text" set:html={item.answer}></div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+    function toggleFaq(id) {
+        const content = document.getElementById(id);
+        const icon = document.getElementById('icon-' + id);
+        
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            content.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+        }
+    }
+</script>

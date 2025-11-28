@@ -1,0 +1,118 @@
+---
+import { siteConfig } from '../config/site';
+
+const { company } = siteConfig;
+---
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-17">
+
+            <a href="/" class="flex items-center gap-1" aria-label="Inicio">
+                <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                    <!-- Placeholder logo for demo -->
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">LOGO</div>
+                </div>
+                <div class="flex flex-col justify-center -space-y-0.5">
+                    <span class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">
+                        {company.logoText}<span class="text-primary">{company.logoTextHighlight}</span>
+                    </span>
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                        <slot /> <!-- This is where the region text goes -->
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm">
+                <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+                <a href="/ejemplo-servicio" class="hover:text-primary transition-colors">Servicios</a>
+                <a href="/ejemplo-zona" class="hover:text-primary transition-colors">Zonas</a>
+                <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+                <a href="/faq" class="hover:text-primary transition-colors">Ayuda</a>
+                <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a>
+                
+                <div class="flex items-center gap-4 ml-4">
+                    <a href={`https://wa.me/${company.whatsapp}`} class="bg-accent hover:bg-accent-hover text-white px-5 py-2.5 rounded-full font-bold shadow-lg transition hover:-translate-y-0.5 flex items-center gap-2">
+                        WhatsApp Contacto
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <div class="flex items-center gap-4 lg:hidden">
+                <a href={`https://wa.me/${company.whatsapp}`} class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                    <i class="fa-brands fa-whatsapp text-xl text-accent"></i>
+                </a>
+                <button onclick="openMenu()" aria-label="Abrir menú de navegación" class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay (Fuera del Nav para evitar problemas de stacking context) -->
+<div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
+    
+    <!-- Panel -->
+    <div id="mobile-menu-panel" class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        
+        <!-- Header -->
+        <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
+            <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
+            <button onclick="closeMenu()" aria-label="Cerrar menú" class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Links -->
+        <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
+            <a href="/" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Inicio</a>
+            <a href="/ejemplo-servicio" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Servicios</a>
+            <a href="/ejemplo-zona" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Zonas</a>
+            <a href="/blog" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Blog</a>
+            <a href="/faq" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Ayuda</a>
+            <a href="/contacto" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Contacto</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-6 border-t border-slate-100 bg-slate-50">
+            <a href={`https://wa.me/${company.whatsapp}`} class="block w-full bg-accent hover:bg-accent-hover text-white px-5 py-3 rounded-xl font-bold text-center transition shadow-lg shadow-green-500/20">
+                <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Urgente
+            </a>
+        </div>
+    </div>
+</div>
+
+<script is:inline>
+    // Funciones globales exactamente como en el HTML original
+    window.openMenu = function() {
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const panel = document.getElementById('mobile-menu-panel');
+        if (overlay && panel) {
+            overlay.classList.remove('invisible', 'opacity-0');
+            panel.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    window.closeMenu = function() {
+        const overlay = document.getElementById('mobile-menu-overlay');
+        const panel = document.getElementById('mobile-menu-panel');
+        if (overlay && panel) {
+            panel.classList.add('translate-x-full');
+            overlay.classList.add('invisible', 'opacity-0');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Soporte para View Transitions
+    document.addEventListener('astro:after-swap', () => {
+        window.closeMenu();
+    });
+</script>

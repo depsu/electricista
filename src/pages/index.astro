@@ -9,97 +9,70 @@ import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
 ---
 
-<Layout title="Plantilla Demo Astro">
+<Layout title="Servicios Eléctricos El Rayo - Electricista Autorizado SEC">
 	<Hero 
-        title="Plantilla Demo <br><span class='text-blue-400'>Astro + Tailwind</span>"
-        subtitle="Esta es una demostración de cómo estructurar el sitio usando componentes reutilizables para máxima velocidad y mantenibilidad."
+        title="Servicios Eléctricos <br><span class='text-amber-400'>El Rayo</span>"
+        subtitle="Llego rápido, cobro lo justo y dejo todo funcionando. Electricista autorizado SEC a domicilio y urgencias."
         bgImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
-        badgeText="Demo Técnica"
+        badgeText="Autorizado SEC"
     />
 
     <StatsGrid 
         stats={[
             { number: "+10", label: "Años de Experiencia", icon: "fa-solid fa-calendar-check" },
-            { number: "+5000", label: "Clientes Satisfechos", icon: "fa-solid fa-users" },
-            { number: "24/7", label: "Atención Urgencias", icon: "fa-solid fa-clock" },
-            { number: "100%", label: "Garantía de Servicio", icon: "fa-solid fa-medal" }
+            { number: "+1000", label: "Trabajos Realizados", icon: "fa-solid fa-bolt" },
+            { number: "24/7", label: "Urgencias Eléctricas", icon: "fa-solid fa-clock" },
+            { number: "SEC", label: "Instalador Autorizado", icon: "fa-solid fa-id-card" }
         ]}
     />
 
     <FeatureSection 
-        title="Soluciones Profesionales para tu Hogar"
-        subtitle="Nos especializamos en resolver problemas complejos con tecnología de punta y personal altamente capacitado."
+        title="Servicios Eléctricos Profesionales"
+        subtitle="Atiendo en todo Santiago, principalmente en las comunas de Maipú, Pudahuel y Estación Central."
         image="https://images.unsplash.com/photo-1581094794329-cd1096a7a438?q=80&w=2070&auto=format&fit=crop"
         features={[
-            "Atención inmediata en menos de 60 minutos",
-            "Equipos de última tecnología sin romper pisos",
-            "Personal certificado y con antecedentes al día",
-            "Garantía por escrito en todos los trabajos"
+            "Urgencias eléctricas 24 horas (cortes de luz, fallas)",
+            "Cambio de tableros y automáticos",
+            "Trámite de certificación TE1 (Anexo 1) para empalmes",
+            "Instalaciones domiciliarias seguras"
         ]}
     />
 
     <FeatureSection 
-        title="Tecnología que Marca la Diferencia"
-        subtitle="Utilizamos cámaras de inspección y maquinaria de alta presión para asegurar resultados duraderos."
+        title="¿Por qué elegir a El Rayo?"
+        subtitle="Compromiso, seguridad y rapidez en cada trabajo eléctrico que realizamos."
         image="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
         align="right"
         features={[
-            "Diagnóstico preciso con video inspección",
-            "Hidrolavado de alta potencia",
-            "Detección de fugas sin destrucción",
-            "Mantenimiento preventivo programado"
+            "Electricista autorizado SEC",
+            "Llego rápido a tu domicilio",
+            "Cobro lo justo, sin sorpresas",
+            "Dejo todo funcionando perfectamente"
         ]}
     />
 
-    <PricingTable 
-        title="Planes Transparentes"
-        subtitle="Elige el plan que mejor se adapte a tus necesidades. Sin costos ocultos."
-        plans={[
-            {
-                name: "Básico",
-                price: "$45.000",
-                description: "Para mantenciones preventivas simples.",
-                features: ["Visita técnica", "Diagnóstico visual", "Limpieza básica", "Informe digital"],
-                ctaText: "Agendar Visita"
-            },
-            {
-                name: "Estándar",
-                price: "$85.000",
-                description: "La opción más elegida para hogares.",
-                features: ["Todo lo del plan Básico", "Destape con máquina", "Garantía 3 meses", "Sanitización área"],
-                isPopular: true,
-                ctaText: "Lo Quiero"
-            },
-            {
-                name: "Premium",
-                price: "$150.000",
-                description: "Solución completa para problemas graves.",
-                features: ["Todo lo del plan Estándar", "Hidrolavado a presión", "Video inspección", "Garantía 6 meses"],
-                ctaText: "Solicitar Premium"
-            }
-        ]}
-    />
+    <!-- PricingTable removed as per request -->
 
     <Testimonials 
         reviews={[
             {
                 name: "María González",
-                text: "Excelente servicio, llegaron muy rápido y solucionaron el problema sin ensuciar nada. Totalmente recomendados.",
+                text: "Excelente servicio, Juan llegó muy rápido cuando tuve un corte de luz y solucionó el problema de inmediato.",
                 rating: 5,
-                location: "Las Condes"
+                location: "Maipú"
             },
             {
                 name: "Carlos Tapia",
-                text: "Muy profesionales. Me explicaron todo el proceso y el precio fue justo. Volveré a llamarlos para la mantención.",
+                text: "Muy profesional. Me ayudó con el trámite TE1 para mi empalme y todo salió perfecto. Precio justo.",
                 rating: 5,
-                location: "Colina"
+                location: "Pudahuel"
             },
             {
                 name: "Ana Silva",
-                text: "Me salvaron un domingo por la tarde. El técnico fue muy amable y eficiente. Gracias por la rápida atención.",
+                text: "Me salvaron un domingo por la tarde con una falla en el tablero. El técnico fue muy amable y eficiente.",
                 rating: 5,
-                location: "Ñuñoa"
-            }
+                location: "Estación Central"
+            },
         ]}
     </Testimonials>
 
@@ -122,9 +95,9 @@ import FAQ from '../components/FAQ.astro';
     />
 
     <CallToAction 
-        title="¿Tienes una Emergencia?"
-        subtitle="Nuestro equipo está listo para ayudarte las 24 horas del día, los 7 días de la semana."
-        ctaText="Llamar Ahora"
-        ctaLink="tel:+56912345678"
+        title="¿Necesitas un electricista urgente?"
+        subtitle="Contáctame ahora y solucionaré tu problema eléctrico. Llego rápido, cobro lo justo."
+        ctaText="Contactar por WhatsApp"
+        ctaLink="https://wa.me/56987654321"
     />
 </Layout>

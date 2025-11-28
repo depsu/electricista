@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config/site';
+const { company } = siteConfig;
 ---
 <!-- Mobile Bottom Bar -->
 <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
@@ -8,15 +10,15 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
         </span>
-        <span>3 Unidades disponibles</span>
+        <span>Disponible ahora</span>
     </div>
     <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
-        <a href="tel:+56912345678"
+        <a href={`tel:${company.phone}`}
             class="flex-1 bg-blue-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-blue-600/20"
             aria-label="Llamar ahora">
             <i class="fa-solid fa-phone animate-pulse"></i> Llamar
         </a>
-        <a href="https://wa.me/56912345678"
+        <a href={`https://wa.me/${company.whatsapp}`}
             class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
             aria-label="WhatsApp">
             <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
@@ -40,9 +42,11 @@
 <div class="wa-chat-box" id="whatsapp-chat">
     <div class="wa-header">
         <button class="wa-close-btn" id="wa-close-btn">×</button>
-        <div class="w-12 h-12 rounded-full bg-slate-200 mr-4 flex items-center justify-center text-slate-500 font-bold">LOGO</div>
+        <div class="w-12 h-12 rounded-full bg-slate-200 mr-4 flex items-center justify-center text-slate-500 font-bold">
+            {company.logoText}
+        </div>
         <div class="wa-info">
-            <h4>Nombre Empresa</h4>
+            <h4>{company.name}</h4>
             <p>En línea</p>
         </div>
     </div>
@@ -53,7 +57,7 @@
         </div>
     </div>
     <div class="wa-footer">
-        <a href="https://wa.me/56912345678?text=Hola,%20necesito%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="wa-start-chat-btn">
+        <a href={`https://wa.me/${company.whatsapp}?text=Hola,%20necesito%20un%20electricista`} target="_blank" class="wa-start-chat-btn">
             COMENZAR CHAT
         </a>
     </div>

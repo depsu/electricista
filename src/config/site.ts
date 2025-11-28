@@ -33,31 +33,30 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
     company: {
-        name: "NombreEmpresa",
-        logoText: "NOMBRE",
-        logoTextHighlight: "EMPRESA",
-        email: "contacto@ejemplo.com",
-        phone: "+56 9 1234 5678",
-        whatsapp: "56912345678",
-        address: "Región Metropolitana, Chile"
+        name: "Servicios Eléctricos \"El Rayo\"",
+        logoText: "EL",
+        logoTextHighlight: "RAYO",
+        email: "contacto@eletricistapro.cl",
+        phone: "+56 9 8765 4321",
+        whatsapp: "56987654321",
+        address: "Santiago, Chile"
     },
     social: {
-        facebook: "https://facebook.com",
-        instagram: "https://instagram.com"
+        facebook: "https://facebook.com/juan.electricista.stgo",
     },
     theme: {
         navbarVariant: 'service',
         footerVariant: 'service',
         font: 'sans', // 'sans' | 'serif' | 'mono'
         colors: {
-            primary: '#2563eb',   // blue-600
+            primary: '#fbbf24',   // amber-400 (Electrician yellow/orange)
             secondary: '#1e293b', // slate-800
             accent: '#16a34a'     // green-600 (WhatsApp)
         }
     },
     features: {
         showServiceStatus: true,
-        showBlog: true,
+        showBlog: false,
         showTestimonials: true
     }
 };

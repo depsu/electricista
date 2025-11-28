@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config/site';
+
 interface Props {
     title?: string;
     subtitle?: string;
@@ -8,6 +10,8 @@ const {
     title = "Contáctanos", 
     subtitle = "Completa el formulario y te responderemos a la brevedad."
 } = Astro.props;
+
+const { company } = siteConfig;
 ---
 
 <section class="py-20 bg-white">
@@ -18,20 +22,17 @@ const {
         </div>
 
         <form 
-            action="https://formsubmit.co/tu-email@ejemplo.com" 
+            action={`https://formsubmit.co/${company.email}`} 
             method="POST" 
             class="bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm"
         >
             <!-- IMPORTANTE: Reemplazar 'tu-email@ejemplo.com' con tu email real -->
             
             <!-- Configuración de Formsubmit -->
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde el sitio web">
+            <input type="hidden" name="_subject" value={`Nuevo mensaje desde ${company.name}`}>
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://tu-dominio.com/gracias">
-            <!-- IMPORTANTE: Reemplazar 'https://tu-dominio.com/gracias' con la URL completa de tu sitio -->
-            <!-- Ejemplo: https://miempresa.cl/gracias -->
-            <!-- Para desarrollo local: http://localhost:4321/gracias -->
+            <input type="hidden" name="_next" value="https://www.eletricistapro.cl/gracias">
             
             <!-- Honeypot para anti-spam -->
             <input type="text" name="_honey" style="display:none">

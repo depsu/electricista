@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config/site';
+
 interface Props {
     title?: string;
     buttonText?: string;
@@ -11,6 +13,8 @@ const {
     variant = 'light'
 } = Astro.props;
 
+const { company } = siteConfig;
+
 const bgClass = variant === 'dark' ? 'bg-slate-800' : 'bg-white';
 const textClass = variant === 'dark' ? 'text-white' : 'text-slate-900';
 const inputClass = variant === 'dark' 
@@ -22,14 +26,14 @@ const inputClass = variant === 'dark'
     <h3 class={`text-lg font-bold ${textClass} mb-4`}>{title}</h3>
     
     <form 
-        action="https://formsubmit.co/tu-email@ejemplo.com" 
+        action={`https://formsubmit.co/${company.email}`} 
         method="POST"
         class="space-y-4"
     >
         <!-- Configuración Formsubmit -->
-        <input type="hidden" name="_subject" value="Nueva solicitud de cotización">
+        <input type="hidden" name="_subject" value={`Nueva solicitud de cotización para ${company.name}`}>
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://tu-dominio.com/gracias">
+        <input type="hidden" name="_next" value="https://www.eletricistapro.cl/gracias">
         <input type="text" name="_honey" style="display:none">
 
         <div>

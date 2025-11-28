@@ -1,8 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
+
+const { company } = siteConfig;
 ---
 
-<Layout title="Mensaje Enviado | Nombre Empresa" regionText="Gracias">
+<Layout title={`Mensaje Enviado | ${company.name}`} regionText="Gracias">
     <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-slate-50 py-20">
         <div class="container mx-auto px-4 max-w-2xl text-center">
             <div class="bg-white p-12 rounded-3xl shadow-xl border border-slate-200">
@@ -22,7 +25,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
                     <p class="text-sm text-blue-800">
                         <i class="fa-solid fa-clock mr-2"></i>
-                        Tiempo de respuesta estimado: <strong>24 horas</strong>
+                        Tiempo de respuesta estimado: <strong>30 minutos</strong>
                     </p>
                 </div>
 
@@ -30,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
                     <a href="/" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">
                         <i class="fa-solid fa-home mr-2"></i> Volver al Inicio
                     </a>
-                    <a href="https://wa.me/56912345678" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition">
+                    <a href={`https://wa.me/${company.whatsapp}`} class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition">
                         <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Urgente
                     </a>
                 </div>
